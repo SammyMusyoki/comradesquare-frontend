@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React  from 'react'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from'react-router-dom'
+import BaseLayouts from './Layouts/BaseLayouts';
+import Home from './Pages/Home';
+import Login from './Pages/Authentication/Login';
+import { AuthContextProvider } from './Contexts/AuthContext';
+import PrivateRoutes from './Routes/PrivateRoutes';
+import Registration from './Pages/Authentication/Registration';
 
+const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<BaseLayouts/>}>
+        <Route path='login' element={<Login/>}/>
+        <Route path='register' element={<Registration/>}/>
+        <Route path='/home/*' element={<PrivateRoutes/>}>
+        <Route path='products' element={<Home/>}/>
+
+        </Route>
+      </Route>
+    )
+)
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
+  )
 }
 
 export default App;
