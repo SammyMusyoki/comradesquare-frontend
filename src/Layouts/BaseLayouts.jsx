@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from '../components/Common/Header'
+import Header from '../components/Common/Navbar/Header'
 import Footer from '../components/Common/Footer'
 import { AnimatePresence } from 'framer-motion'
 import Notification from '../components/Notification/Notification'

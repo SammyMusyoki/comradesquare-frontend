@@ -81,7 +81,7 @@ const AuthContextProvider = ({ children }) => {
                 setUser(jwt_decode(userDetails.access));
                 localStorage.setItem('authTokens', JSON.stringify(userDetails));
                 setLoading(false)
-                navigate('/home');
+                navigate('/');
                 setSuccessMessage("User logged in Successfully");
             } else {
                 const errorData = await response.json();

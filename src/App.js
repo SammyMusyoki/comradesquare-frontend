@@ -10,10 +10,11 @@ import Registration from './Pages/Authentication/Registration';
 const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<BaseLayouts/>}>
+        <Route index element={<Home/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='register' element={<Registration/>}/>
         <Route path='/home/*' element={<PrivateRoutes/>}>
-        <Route path='products' element={<Home/>}/>
+        {/* <Route index path='products' element={<Home/>}/> */}
 
         </Route>
       </Route>
